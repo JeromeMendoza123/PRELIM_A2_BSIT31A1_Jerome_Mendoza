@@ -1,0 +1,38 @@
+﻿@* Displays a table of books from the HomeController *@
+
+@model List<PRELIM_A2_BSIT31A1_Jerome_Mendoza.Models.Book>
+
+<h2>Library Book List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>ISBN</th>
+            <th>Genre</th>
+            <th>Author</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.Genre</td>
+                    <td>@book.Author.FullName</td>
+                    <td>@(book.IsAvailable ? "Available" : "Borrowed")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No books available.</td>
+            </tr>
+        }
+    </tbody>
+</table>
